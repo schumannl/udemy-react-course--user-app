@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../../Ui/Button';
 import Card from '../../Ui/Card';
 
 function Form(props) {
@@ -55,7 +56,7 @@ function Form(props) {
                         onChange={ageChangeHandler}
                     />
                 </p>
-                <button id="add">Add user</button>
+                <Button type="submit">Add user</Button>
             </form>
         </Card>
     );
