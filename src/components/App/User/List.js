@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 
 function List(props) {
     function displayUser(user) {
-        return <ListItem name={user.name} age={user.age} />;
+        return <ListItem key={user.id} name={user.name} age={user.age} />;
     }
 
     function displayNoUser() {
