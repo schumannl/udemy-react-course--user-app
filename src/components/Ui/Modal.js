@@ -2,11 +2,11 @@ import React from "react";
 import Button from "./Button";
 import Card from "./Card";
 
-import './Modal.css';
+import styles from './Modal.module.css';
 
 function Modal(props) {
     return (
-        <div className="modalBg" onClick={props.onCtaClick}>
+        <div className={styles.modalBg} onClick={props.onCtaClick}>
             <Card>
                 <header className="bg-dark text-light">
                     <h2>{props.title}</h2>

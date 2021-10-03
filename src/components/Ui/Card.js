@@ -1,10 +1,10 @@
 import React from "react";
 
+import styles from './Card.module.css';
+
 function Card(props) {
-    return (
-        <div className='d-flex justify-content-center'>
-            <div className='bg-light rounded p-1 mt-2'>{props.children}</div>
-        </div>
+    return (  
+        <div className={styles.customCard}>{props.children}</div>
     );
 }
 

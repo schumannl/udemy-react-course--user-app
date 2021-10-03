@@ -1,11 +1,11 @@
 import React from "react";
 
-import './Button.css';
+import styles from './Button.module.css';
 
 function Button(props) {
     const className = (props.className)
-    ? props.className + "float-end"
-    : "float-end";
+    ? props.className + " " + styles.button
+    : styles.button;
 
     return (
         <button
