@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../../Ui/Button';
 import Card from '../../Ui/Card';
 
@@ -16,8 +16,41 @@ function Form(props) {
 
     function onSubmitHandler(event) {
         event.preventDefault();
-        props.onAddUser(createUser());
-        resetFormValues();
+
+        if (isValidForm()) {
+            props.onAddUser(createUser());
+            resetFormValues();
+        }
+    }
+
+    function isValidName() {
+        return name.trim() !== '';
+    }
+
+    function isValidAge() {
+        return age > 0;
+    }
+
+    function isValidForm() {
+        if (!isValidName()) {        
+            props.onInvalidData({
+                title: 'Invalid name!',
+                message: 'Name must not be empty!'
+            });
+
+            return false;
+        }
+        
+        if (!isValidAge()) {        
+            props.onInvalidData({
+                title: 'Invalid age!',
+                message: 'Age must be bigger than 0!'
+            });
+
+            return false;
+        }
+
+        return true;
     }
 
     function createUser() {

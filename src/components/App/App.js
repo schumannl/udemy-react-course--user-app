@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Modal from '../Ui/Modal';
 import UserForm from './User/Form';
 import UserList from './User/List';
 
@@ -9,6 +10,8 @@ const USERS = [];
 
 function App() {
   const [users, setUsers] = useState(USERS);
+  const [isModalDisplayed, setIsModalDisplayed] = useState(false);
+  const [modal, setModal] = useState();
 
   function addUserHandler(newUser) {
     setUsers(function (previousState){
@@ -19,6 +22,18 @@ function App() {
     });
   }
 
+  function registerError(error) {
+    setModal({
+      title: error.title,
+      message: error.message
+    });
+    setIsModalDisplayed(true);
+  }
+
+  function hideModal() {
+    setIsModalDisplayed(false);
+  }
+
   return (
     <>
       <UserForm
@@ -26,9 +41,10 @@ function App() {
         ageStep={FORM_INPUT_AGE_STEP}
         nameDefault={FORM_INPUT_NAME_DEFAULT}
         onAddUser={addUserHandler}
+        onInvalidData={registerError}
       />
-
       <UserList users={users} />
+      {isModalDisplayed && <Modal title={modal.title} message={modal.message} onCtaClick={hideModal}></Modal>}
     </>
   );
 }
