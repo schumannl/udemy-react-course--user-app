@@ -89,7 +89,7 @@ function Form(props) {
                         onChange={ageChangeHandler}
                     />
                 </p>
-                <Button type="submit" className="futyi">Add user</Button>
+                <Button type="submit">Add user</Button>
             </form>
         </Card>
     );
